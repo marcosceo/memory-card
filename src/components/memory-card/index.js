@@ -22,14 +22,11 @@ function createFrontMemoryCard() {
                 alt="Icone de um livro da linguagem C++"
                 >`;           
 
-// Add class to the components
-
 $frontMemoryCard.classList.add("memory-card");
 $frontMemoryCard.classList.add("-front");
-
-// Add component to the root tag
 
 
 $wrapCards.insertBefore($frontMemoryCard, null);
 $frontMemoryCard.insertAdjacentHTML("beforeend", $iconC);
 }
+
