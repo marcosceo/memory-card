@@ -26,6 +26,7 @@
 .memory-card > .icon {
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
 
 .memory-card.-front > .icon {

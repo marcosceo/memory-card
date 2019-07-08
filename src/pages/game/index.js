@@ -1,17 +1,20 @@
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createMemoryCard();
-createFrontMemoryCard();
-createFrontMemoryCard();
+const $root = document.querySelector("#root");
 
-const wrap = document.querySelector(".wrap-cards");
+const $cardsWrapper = createCardsWrapper();
+const $memoryCard = createMemoryCard();
+const $frontMemoryCard = createMemoryCard("-front");
 
-wrap.addEventListener("click", function(e) {
-    if (e.target.classList.contains("memory-card") || e.target.classList.contains("icon")){
-        console.log("ae");
-    } 
-})
+$root.insertAdjacentElement("beforeend", $cardsWrapper);
+
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $memoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $frontMemoryCard);
+$cardsWrapper.insertAdjacentHTML("beforeend", $frontMemoryCard);
+
+
+
 
