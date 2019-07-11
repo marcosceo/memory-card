@@ -2,37 +2,26 @@ const $root = document.querySelector("#root");
 
 const $cardsWrapper = createCardsWrapper();
 
-const memoryCard = {
+const $memoryCard = createMemoryCard({
     nameClass: "",
     src: "img/icon-collabcode.png",
     alt: "Gueio, mascote da Collabcode"
-}
-
-const languageC = {
+});
+const $frontardC= createMemoryCard({
     nameClass: "-front",
     src: "img/icon-c.png",
     alt: "Icone de um livro da linguagem C++"
-}
-const languageJava = {
+});
+const $frontCardJava = createMemoryCard({
     nameClass: "-front",
     src: "img/icon-java.png",
     alt: "Icone de um livro da linguagem Java"
-}
-const woman = {
+});
+const $frontCardWoman = createMemoryCard({
     nameClass: "-front",
     src: "img/icon-woman.png",
     alt: "Icone representando uma mulher ao computador"
-}
-
-const $memoryCard = createMemoryCard(memoryCard);
-const $frontardC= createMemoryCard(languageC);
-const $frontCardJava = createMemoryCard(languageJava);
-const $frontCardWoman = createMemoryCard(woman);
-
-// const $memoryCard = createMemoryCard("img/icon-collabcode.png", "Gueio, mascote da Collabcode");
-// const $frontardC= createMemoryCard("img/icon-c.png", "Icone de um livro da linguagem C++","-front");
-// const $frontCardJava = createMemoryCard("img/icon-java.png", "Icone de um livro da linguagem Java","-front");
-// const $frontCardWoman = createMemoryCard("img/icon-woman.png", "Icone representando uma mulher ao computador","-front");
+});
 
 $root.insertAdjacentElement("beforeend", $cardsWrapper);
 
