@@ -1,4 +1,4 @@
-const createMemoryCard = ({nameClass, src, alt}) => {
+const memoryCard = () => {
     
     const $head = document.querySelector("head");
     const $style = document.createElement("style");
@@ -7,20 +7,34 @@ const createMemoryCard = ({nameClass, src, alt}) => {
     .memory-card {
         width: 155px;
         height: 155px;
+        position: relative;
+    }
+
+    .memory-card .card {
+        width: 100%;
+        height: 100%;
         background-color: #f25a70;
         border-radius: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: 0 3px 6px  rgba(0, 0, 0, 0.16);
-        position: relative;
+        position: absolute;
+    }
+
+    .memory-card.-active .card {
+        display: none;
+    }
+
+    .memory-card.-active .card.-front {
+        display: flex;
     }
     
-    .memory-card.-front {
+    .memory-card .card.-front {
         background-color: #fff;
     }
     
-    .memory-card.-front::before {
+    .memory-card .card.-front::before {
         content: "";
         width: 95px;
         height: 95px;
@@ -29,31 +43,44 @@ const createMemoryCard = ({nameClass, src, alt}) => {
         position: absolute;
     }
     
-    .memory-card > .icon {
+    .memory-card .card > .icon {
         width: 100px;
         height: 100px;
         cursor: pointer;
     }
     
-    .memory-card.-front > .icon {
+    .memory-card .card.-front > .icon {
         position: absolute;
         transform: translateY(-12px);
     }`;
 
     $head.insertAdjacentElement("beforeend", $style);
 
-    return `
-            <article class="memory-card ${nameClass}">
-                <img 
-                    class="icon" 
-                    src="${src}"
-                    alt="${alt}"
-                    onclick = "handleClick()"
-                />
-            </article>
+    return ({src, alt}) => `
+            <div class="memory-card" onclick = "handleClick(this)">
+                <article class="card -front">
+                    <img 
+                        class="icon" 
+                        src="${src}"
+                        alt="${alt}"
+                        
+                    />
+                </article>
+                <article class="card">
+                    <img 
+                        class="icon" 
+                        src="img/icon-collabcode.png"
+                        alt=""Gueio, mascote da Collabcode""
+                        
+                    />
+                </article>
+                
+            </div>
             `;
         }
 
 
 
-const handleClick = () => console.log("Consegui!");
+const handleClick = ($component) => $component.classList.toggle("-active");
+  
+;
