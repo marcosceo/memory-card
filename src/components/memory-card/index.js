@@ -81,35 +81,41 @@ const memoryCard = () => {
   `;
 }
 
-let score = 0;
 const handleClick = $component => {
   if(!$component.classList.contains("-active")) {
-    if (numberActiveMemoryCard < 2) {
-      $component.classList.toggle("-active");
-    };
-
-    if (numberActiveMemoryCard === 1) {
-      const $memoryCards = document.querySelectorAll(".memory-card.-active");
-      if($memoryCards[0].querySelector(".-front .icon").getAttribute("src") === $memoryCards[1].querySelector(".-front .icon").getAttribute("src")){
-        
-        score++;
-        console.log("Score: ", score);
-
-        $memoryCards.forEach($memoryCard => {
-          $memoryCard.classList.add("-score");
-          $memoryCard.classList.remove("-active");  
-        });
-      } else { 
-        setTimeout(() => {
-          const $activeMemoryCard = document.querySelectorAll(".memory-card.-active");
-  
-          $activeMemoryCard.forEach(($memoryCard) => {
-            $memoryCard.classList.remove("-active");
-          });
-  
-          numberActiveMemoryCard = 0;
-        }, 1500);
-      }
-    }
+    activeMemoryCard($component);
+    checkScore();    
   }
 };  
+
+function activeMemoryCard($component) {
+  if (store.numberActiveMemoryCard < 2) {
+    $component.classList.add("-active");
+  };
+};
+
+function checkScore() {
+  if (store.numberActiveMemoryCard === 1) {
+    const $activeMemoryCard = document.querySelectorAll(".memory-card.-active");
+    if($activeMemoryCard[0].querySelector(".-front .icon").getAttribute("src") === $activeMemoryCard[1].querySelector(".-front .icon").getAttribute("src")){
+      
+      store.score++;
+      console.log("Score: ", store.score);
+
+      $activeMemoryCard.forEach($memoryCard => {
+        $memoryCard.classList.add("-score");
+        $memoryCard.classList.remove("-active");  
+      });
+    } else { 
+      setTimeout(() => {
+        
+
+        $activeMemoryCard.forEach(($memoryCard) => {
+          $memoryCard.classList.remove("-active");
+        });
+
+        store.numberActiveMemoryCard = 0;
+      }, 1500);
+    }
+  }
+}

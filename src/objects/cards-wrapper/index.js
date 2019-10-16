@@ -1,4 +1,4 @@
-let numberActiveMemoryCard = 0;
+
 
 function createCardsWrapper() {
   const $cardsWrapper = document.createElement("section");
@@ -24,7 +24,7 @@ function createCardsWrapper() {
   $head.insertBefore($style, null);
 
   $cardsWrapper.addEventListener("click", () => {
-    numberActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
+    store.numberActiveMemoryCard = $cardsWrapper.querySelectorAll(".memory-card.-active").length;
   });
 
   const $cardActive = document.querySelectorAll(".memory-card.-active");
