@@ -1,5 +1,52 @@
-const memoryCard = (function() {
-  const create = () => {
+//**Padrao declarando as constantes e depois retornando pelo nome de cada uma delas**
+//
+// const memoryCard = (function() {
+//  const create = () => {
+//  };
+
+//  const handleClick = $component => {
+//  };  
+
+//  const activeMemoryCard = ($component) => {
+//  };
+
+//  const checkScore = () => {
+//  };
+
+//  return {
+//    create,
+//    handleClick
+// };
+
+// })();
+
+
+// **Padrao declarando as funcoes direto no return**
+
+// const memoryCard = (function () {
+//   const activeMemoryCard = ($component) => {
+//   };
+
+//   const checkScore = () => {
+//   };
+
+//   return {
+//     create: () => {
+//     },
+//     handleClick: $component => {
+//     }
+//   };
+
+// })();
+
+
+//**Padrao declarando atraves de modules**
+
+const memoryCard = (function () {
+
+const module = {};
+
+  module.create = () => {
 
     const $head = document.querySelector("head");
     const $style = document.createElement("style");
@@ -80,36 +127,36 @@ const memoryCard = (function() {
         
     </div>
     `;
+  },
+
+  module.handleClick = $component => {
+    if (!$component.classList.contains("-active")) {
+      module.activeMemoryCard($component);
+      module.checkScore();
+    }
   }
 
-  const handleClick = $component => {
-    if(!$component.classList.contains("-active")) {
-      activeMemoryCard($component);
-      checkScore();    
-    }
-  };  
-
-  function activeMemoryCard($component) {
+  module.activeMemoryCard = ($component) => {
     if (store.numberActiveMemoryCard < 2) {
       $component.classList.add("-active");
     };
   };
 
-  function checkScore() {
+  module.checkScore = () => {
     if (store.numberActiveMemoryCard === 1) {
       const $activeMemoryCard = document.querySelectorAll(".memory-card.-active");
-      if($activeMemoryCard[0].querySelector(".-front .icon").getAttribute("src") === $activeMemoryCard[1].querySelector(".-front .icon").getAttribute("src")){
-        
+      if ($activeMemoryCard[0].querySelector(".-front .icon").getAttribute("src") === $activeMemoryCard[1].querySelector(".-front .icon").getAttribute("src")) {
+
         store.score++;
         console.log("Score: ", store.score);
 
         $activeMemoryCard.forEach($memoryCard => {
           $memoryCard.classList.add("-score");
-          $memoryCard.classList.remove("-active");  
+          $memoryCard.classList.remove("-active");
         });
-      } else { 
+      } else {
         setTimeout(() => {
-          
+
 
           $activeMemoryCard.forEach(($memoryCard) => {
             $memoryCard.classList.remove("-active");
@@ -122,8 +169,8 @@ const memoryCard = (function() {
   };
 
   return {
-    create,
-    handleClick
+    create: module.create,
+    handleClick: module.handleClick
   };
 
 })();
