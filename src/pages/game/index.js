@@ -1,8 +1,9 @@
+(function(){
 const $root = document.querySelector("#root");
 
 const $cardsWrapper = createCardsWrapper();
 
-const createMemoryCard = memoryCard();
+const createMemoryCard = memoryCard.create();
 
 const $frontCardJS = createMemoryCard({
   src: "img/icon-js.png",
@@ -31,7 +32,7 @@ $cardsWrapper.insertAdjacentHTML("beforeend", $frontCardJava);
 $cardsWrapper.insertAdjacentHTML("beforeend", $frontCardJava);
 $cardsWrapper.insertAdjacentHTML("beforeend", $frontCardC);
 $cardsWrapper.insertAdjacentHTML("beforeend", $frontCardC);
-
+})();
 
 
 
