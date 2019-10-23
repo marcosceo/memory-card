@@ -148,7 +148,7 @@ const module = {};
       if ($activeMemoryCard[0].querySelector(".-front .icon").getAttribute("src") === $activeMemoryCard[1].querySelector(".-front .icon").getAttribute("src")) {
 
         store.score++;
-        console.log("Score: ", store.score);
+        document.querySelector(".number").textContent=store.score;
 
         $activeMemoryCard.forEach($memoryCard => {
           $memoryCard.classList.add("-score");
