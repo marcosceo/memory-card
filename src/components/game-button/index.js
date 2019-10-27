@@ -21,10 +21,11 @@ const gameButton = (() => {
           font-size: 1.05em;
           cursor: pointer;
           box-shadow: 0 4px 8px #3a4042;
-          transition: opacity 200ms linear;
+          transition: transform 200ms linear, opacity 200ms linear;
         }  
 
         .game-button.-disable {
+          transform: scale(2.5);
           opacity: 0;
         }
       `;
