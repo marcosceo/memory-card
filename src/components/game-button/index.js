@@ -21,16 +21,21 @@ const gameButton = (() => {
           font-size: 1.05em;
           cursor: pointer;
           box-shadow: 0 4px 8px #3a4042;
+          transition: opacity 200ms linear;
         }  
+
+        .game-button.-disable {
+          opacity: 0;
+        }
       `;
       $head.insertBefore($style, null);
-    }
+    };
 
-    module.render = function() {
+    module.render = function(content) {
       module.style();
 
     return`
-      <button class="game-button">Start</button>
+      <button class="game-button" >${content}</button>
     `;
   };
 
