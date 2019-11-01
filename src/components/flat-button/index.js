@@ -25,7 +25,6 @@ const flatButton = (function () {
 
   module.render = (content = "", active= false) => {
     module._id++;
-    console.log(module._id);
     module._style(active);
 
     return `<button class="flat-button-${module._id}">${content}</button>`
